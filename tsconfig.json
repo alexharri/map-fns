@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "lib": [
+      "es2021",
+    ],
+    "types": [
+      "jest",
+      "node",
+    ],
+  },
+}

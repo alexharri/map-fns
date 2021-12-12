@@ -10,6 +10,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
+    "test:ci": "jest --ci",
     "tscheck": "tsc --noEmit --skipLibCheck"
   }
 }

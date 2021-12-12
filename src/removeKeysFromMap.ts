@@ -1,4 +1,4 @@
-import { AnyMap, Key } from "./types";
+import { AnyMap } from "./types";
 
 /**
  * Creates a copy of `map` with certain keys removed.
@@ -12,13 +12,10 @@ import { AnyMap, Key } from "./types";
  * @param keys - The keys to remove from the map.
  * @returns A new map with the removed.
  */
-export const removeKeysFromMap = <
+export default function removeKeysFromMap<
   T extends AnyMap,
   K extends keyof T = keyof T
->(
-  map: T,
-  keys: K | K[]
-): T => {
+>(map: T, keys: K | K[]): T {
   const mapKeys = Object.keys(map) as Array<K & string>;
 
   const originalKeyList = Array.isArray(keys) ? keys : [keys];
@@ -31,4 +28,4 @@ export const removeKeysFromMap = <
     }
     return newMap;
   }, {} as T);
-};
+}

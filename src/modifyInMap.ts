@@ -17,7 +17,7 @@ import { AnyMap } from "./types";
  * @param keys - The keys to modify within the map.
  * @returns A new map with modified values.
  */
-export function modifyInMap<
+export default function modifyInMap<
   M extends AnyMap,
   K extends keyof M = keyof M,
   T extends M[K] = M[K]

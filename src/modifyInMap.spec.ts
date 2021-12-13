@@ -1,4 +1,4 @@
-import { modifyInMap } from "./modifyInMap";
+import modifyInMap from "./modifyInMap";
 
 describe("modifyInMap", () => {
   it("accepts a single key", () => {

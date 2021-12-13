@@ -1,14 +1,15 @@
 import { AnyMap } from "./types";
 
 /**
- * Creates a copy of `map` with certain keys removed.
+ * Creates a new `map` populated with every key in the original `map` except the
+ * keys that exist in the `keys` array.
  *
  * ```tsx
  * const out = removeKeysFromMap({ a: 1, b: 2 }, ["b"]);
  * console.log(out); // { a: 1 }
  * ```
  *
- * @param map - The map to remove keys from
+ * @param map - The map to remove keys from.
  * @param keys - The keys to remove from the map.
  * @returns A new map with the removed.
  */

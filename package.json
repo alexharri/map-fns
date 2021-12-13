@@ -1,16 +1,17 @@
 {
   "name": "map-fns",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:ci": "jest --ci",
     "tscheck": "tsc --noEmit --skipLibCheck",
-    "build": "npm run build:prepare && npm run build:bundle",
+    "build": "npm run build:prepare && npm run build:bundle && npm run build:copy-files",
     "build:bundle": "rollup -c",
     "build:prepare": "npm run build:remove-old-build",
+    "build:copy-files": "cp {README.md,package.json} dist/",
     "build:remove-old-build": "rm -rf dist/ && rm -rf out/",
-    "release": "semantic-release"
+    "release": "cd dist && semantic-release"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",

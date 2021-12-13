@@ -25,3 +25,6 @@ jobs:
 
       - name: Build # Ensure that the build is successful when it reaches master
         run: npm run build
+
+      - name: Release (Dry Run)
+        run: npm run release:dry-run

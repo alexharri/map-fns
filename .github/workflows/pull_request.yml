@@ -24,6 +24,4 @@ jobs:
         run: npm run test:ci
 
       - name: Build # Ensure that the build is successful when it reaches master
-        run: |
-          ls
-          npm run build
+        run: npm run build

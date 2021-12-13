@@ -9,6 +9,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

@@ -11,20 +11,19 @@ import { AnyMap } from "./types";
  *
  * The original `map` is not modified.
  *
+ * An error is thrown if any key in `keys` does not exist in the map.
+ *
  * @param map - The map to copy and modify.
  * @param keys - The keys to modify within the map.
  * @returns A new map with modified values.
  */
-export const modifyInMap = <
+export function modifyInMap<
   M extends AnyMap,
-  T extends M[keyof M] = M[keyof M]
->(
-  map: M,
-  keys: string | string[],
-  fn: (item: T) => T
-): M => {
+  K extends keyof M = keyof M,
+  T extends M[K] = M[K]
+>(map: M, keys: K | K[], fn: (item: T) => T): M {
   const obj: M = { ...map };
-  const keyList = (Array.isArray(keys) ? keys : keys) as Array<keyof M>;
+  const keyList = (Array.isArray(keys) ? keys : [keys]) as Array<keyof M>;
 
   for (const key of keyList) {
     if (!obj.hasOwnProperty(key)) {
@@ -34,4 +33,4 @@ export const modifyInMap = <
   }
 
   return obj;
-};
+}

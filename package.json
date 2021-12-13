@@ -1,24 +1,30 @@
 {
   "name": "map-fns",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:ci": "jest --ci",
     "tscheck": "tsc --noEmit --skipLibCheck",
-    "build": "npm run build:prepare && npm run build:bundle",
+    "build": "npm run build:prepare && npm run build:bundle && npm run build:copy-files",
     "build:bundle": "rollup -c",
     "build:prepare": "npm run build:remove-old-build",
-    "build:remove-old-build": "rm -rf dist/ && rm -rf out/"
+    "build:copy-files": "cp README.md package.json dist/",
+    "build:remove-old-build": "rm -rf dist/ && rm -rf out/",
+    "release": "cd dist && semantic-release"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
     "@rollup/plugin-typescript": "^8.3.0",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/gitlab": "^7.0.4",
+    "@semantic-release/npm": "^8.0.3",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.12",
     "jest": "^27.4.4",
     "rollup": "^2.61.1",
+    "semantic-release": "^18.0.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.3"
   }

@@ -17,5 +17,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Type check
+        run: npm run tscheck
+
       - name: Test
         run: npm run test:ci
+
+      - name: Build # Ensure that the build is successful when it reaches master
+        run: npm run build

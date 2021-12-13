@@ -1,4 +1,4 @@
-import { removeKeysFromMap } from "./removeKeysFromMap";
+import removeKeysFromMap from "./removeKeysFromMap";
 
 describe("removeKeysFromMap", () => {
   it("removes keys as expected", () => {

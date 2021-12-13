@@ -1,4 +1,4 @@
-import { removeKeysFromMap } from "./removeKeysFromMap";
+import removeKeysFromMap from "./removeKeysFromMap";
 
 /** Keys should match the object type */
 
@@ -18,9 +18,6 @@ removeKeysFromMap("a", ["a"]);
 
 // @ts-expect-error
 removeKeysFromMap(5, [1]);
-
-// @ts-expect-error
-removeKeysFromMap(null, ["a"]);
 
 /** Empty maps have no keys */
 

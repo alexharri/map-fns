@@ -1,5 +1,5 @@
 /** @internal */
-export type Key = string | number;
+type Key = string | number;
 
 /** @internal */
 export interface AnyMap {

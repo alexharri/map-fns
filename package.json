@@ -10,8 +10,7 @@
     "build:bundle": "rollup -c",
     "build:prepare": "npm run build:remove-old-build",
     "build:remove-old-build": "rm -rf dist/ && rm -rf out/",
-    "release": "semantic-release",
-    "release:dry-run": "semantic-release --dry-run --no-ci"
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",

@@ -27,4 +27,8 @@ jobs:
         run: npm run build
 
       - name: Release (Dry Run)
-        run: npm run release:dry-run
+        # The '--dry-run' option does not work as expected for 'semantic-release'. Unsetting
+        # 'GITHUB_ACTIONS' is a workaround.
+        #
+        # See https://github.com/semantic-release/semantic-release/issues/1890#issuecomment-974512960
+        run: unset GITHUB_ACTIONS && npm run release:dry-run

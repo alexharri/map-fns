@@ -1,4 +1,4 @@
-import { AnyMap } from "./types";
+import { AnyMap, MapOf } from "./types";
 
 /**
  * Creates a new `map` populated with every key in the original `map` where the
@@ -24,10 +24,10 @@ import { AnyMap } from "./types";
  * @returns A new map with modified values.
  */
 export default function mergeInMap<
-  M extends AnyMap,
+  M extends MapOf<AnyMap>,
   K extends keyof M = keyof M,
   T extends M[K] = M[K]
->(map: M, keys: string | string[], fn: (item: T) => Partial<T>): M {
+>(map: M, keys: K | K[], fn: (item: T) => Partial<T>): M {
   const obj: M = { ...map };
   const keyList = (Array.isArray(keys) ? keys : [keys]) as Array<keyof M>;
 
@@ -35,7 +35,7 @@ export default function mergeInMap<
     if (!obj.hasOwnProperty(key)) {
       throw new Error(`Key '${key}' does not exist in map.`);
     }
-    obj[key] = { ...obj[key], ...fn(obj[key]) };
+    obj[key] = { ...obj[key], ...fn(obj[key] as T) };
   }
 
   return obj;

@@ -3,7 +3,7 @@ import { AnyMap, MapOf } from "./types";
 /**
  * Creates a new `map` populated with every key in the original `map` where the
  * value behind each `k` in `keys` is the value `map[k]` shallowly merged with
- * the return value of `fn(map[k])`
+ * the return value of `fn(map[k])`.
  *
  * ```tsx
  *  newMap[k] = { ...map[k], ...fn(map[k]) };

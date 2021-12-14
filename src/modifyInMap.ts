@@ -23,7 +23,7 @@ export default function modifyInMap<
   T extends M[K] = M[K]
 >(map: M, keys: K | K[], fn: (item: T) => T): M {
   const obj: M = { ...map };
-  const keyList = (Array.isArray(keys) ? keys : [keys]) as Array<keyof M>;
+  const keyList = (Array.isArray(keys) ? keys : [keys]) as K[];
 
   for (const key of keyList) {
     if (!obj.hasOwnProperty(key)) {

@@ -1,7 +1,7 @@
 import deepMergeInMap from "./deepMergeInMap";
 
 describe("mergeInMapDeep", () => {
-  it("merges objects deeply", () => {
+  it("merges items in the map deeply", () => {
     const map = {
       x: {
         xStr: "foo",
@@ -40,21 +40,27 @@ describe("mergeInMapDeep", () => {
     });
   });
 
+  it("accepts an object to merge instead of a function", () => {
+    const map = { x: { value: 10 }, y: { value: 20 } };
+    const out = deepMergeInMap(map, "x", { value: 11 });
+    expect(out).toEqual({ x: { value: 11 }, y: { value: 20 } });
+  });
+
   it("does not modify objects not specified", () => {
     const map = { x: { value: 1 }, y: { value: 2 } };
-    const out = deepMergeInMap(map, "x", () => ({ value: 3 }));
+    const out = deepMergeInMap(map, "x", { value: 3 });
     expect(out.x).not.toEqual(map.x);
     expect(out.y).toEqual(map.y);
   });
 
   it("does not modify the original map", () => {
     const map = { x: { value: 1 }, y: { value: 2 } };
-    const out = deepMergeInMap(map, "x", () => ({ value: 3 }));
+    const out = deepMergeInMap(map, "x", { value: 3 });
     expect(map).toEqual({ x: { value: 1 }, y: { value: 2 } });
     expect(out).toEqual({ x: { value: 3 }, y: { value: 2 } });
   });
 
-  it("supports deep merge functions", () => {
+  it("supports compute functions that return objects to merge", () => {
     const map = {
       x: {
         xStr: "foo",
@@ -71,6 +77,40 @@ describe("mergeInMapDeep", () => {
     };
     const out = deepMergeInMap(map, "x", () => ({
       y: { z: ({ zNum }) => ({ zNum: zNum + 1 }) },
+    }));
+    expect(out).toEqual({
+      x: {
+        xStr: "foo",
+        xNum: 1,
+        y: {
+          yStr: "bar",
+          yNum: 2,
+          z: {
+            zStr: "baz",
+            zNum: 4,
+          },
+        },
+      },
+    });
+  });
+
+  it("supports compute functions that return primitives", () => {
+    const map = {
+      x: {
+        xStr: "foo",
+        xNum: 1,
+        y: {
+          yStr: "bar",
+          yNum: 2,
+          z: {
+            zStr: "baz",
+            zNum: 3,
+          },
+        },
+      },
+    };
+    const out = deepMergeInMap(map, "x", () => ({
+      y: { z: { zNum: (n) => n + 1 } },
     }));
     expect(out).toEqual({
       x: {

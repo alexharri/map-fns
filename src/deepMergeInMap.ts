@@ -1,31 +1,48 @@
 import { AnyMap, MapOf } from "./types";
 
-type DeepMergable<T> = {
-  [K in keyof T]?: DeepMergable<T[K]> | ((item: T[K]) => DeepMergable<T[K]>);
-};
+type DeepMergable<T> =
+  | ((item: T) => DeepMergable<T>)
+  | {
+      [K in keyof T]?:
+        | DeepMergable<T[K]>
+        | ((item: T[K]) => DeepMergable<T[K]>);
+    };
+
+function isNotMergable(value: unknown): boolean {
+  return (
+    typeof value !== "object" || // Primitives
+    !value || // null
+    value.constructor !== Object // Arrays, Sets, etc
+  );
+}
 
 function deepMerge<T, K extends keyof T = keyof T>(
   target: T,
   toMerge: DeepMergable<T>
 ): T {
+  if (typeof toMerge === "function") {
+    return deepMerge(target, toMerge(target));
+  }
+
   const out = { ...target };
 
   const kList = Object.keys(toMerge) as K[];
   for (const k of kList) {
-    const v = toMerge[k];
-    if (typeof v === "function" && typeof out[k] !== "function") {
-      out[k] = deepMerge(out[k], v(out[k]));
+    let valueToMerge = toMerge[k];
+
+    if (typeof valueToMerge === "function" && typeof out[k] !== "function") {
+      // The value to merge is a function, but the target is not a function.
+      //
+      // The value is a function that returns the actual value to merge.
+      valueToMerge = valueToMerge(out[k]);
+    }
+
+    if (isNotMergable(valueToMerge)) {
+      out[k] = valueToMerge as T[K];
       continue;
     }
-    if (
-      typeof v !== "object" || // Primitives
-      !v || // null
-      (v as any).constructor !== Object // Arrays, Sets, etc
-    ) {
-      out[k] = v as T[K];
-      continue;
-    }
-    out[k] = deepMerge(out[k], v!);
+
+    out[k] = deepMerge(out[k], valueToMerge!);
   }
 
   return out;
@@ -62,17 +79,37 @@ function deepMerge<T, K extends keyof T = keyof T>(
  */
 export default function deepMergeInMap<
   M extends MapOf<AnyMap>,
-  K extends keyof M = keyof M,
-  T extends M[K] = M[K]
->(map: M, keys: K | K[], fn: (item: T) => DeepMergable<T>): M {
+  K extends keyof M = keyof M
+>(
+  map: M,
+  keys: K | K[],
+  /**
+   * Expects a partial value of `map[key]`.
+   *
+   * Supports returning functions to compute properties like so:
+   *
+   * ```tsx
+   *  // "Normal" syntax
+   *  deepMergeInMap(map, "key", (item) => ({
+   *    count: item.count + 1,
+   *  }));
+   *
+   *  // Compute function
+   *  deepMergeInMap(map, "key", () => ({
+   *    count: (count) => count + 1,
+   *  }));
+   * ```
+   */
+  toMerge: DeepMergable<M[K]>
+): M {
   const obj: M = { ...map };
-  const keyList = (Array.isArray(keys) ? keys : [keys]) as Array<keyof M>;
+  const keyList = (Array.isArray(keys) ? keys : [keys]) as K[];
 
   for (const key of keyList) {
     if (!obj.hasOwnProperty(key)) {
       throw new Error(`Key '${key}' does not exist in map.`);
     }
-    obj[key] = deepMerge(obj[key], fn(obj[key] as T) as any);
+    obj[key] = deepMerge(obj[key], toMerge);
   }
 
   return obj;

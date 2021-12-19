@@ -53,4 +53,86 @@ describe("mergeInMapDeep", () => {
     expect(map).toEqual({ x: { value: 1 }, y: { value: 2 } });
     expect(out).toEqual({ x: { value: 3 }, y: { value: 2 } });
   });
+
+  it("supports deep merge functions", () => {
+    const map = {
+      x: {
+        xStr: "foo",
+        xNum: 1,
+        y: {
+          yStr: "bar",
+          yNum: 2,
+          z: {
+            zStr: "baz",
+            zNum: 3,
+          },
+        },
+      },
+    };
+    const out = deepMergeInMap(map, "x", () => ({
+      y: { z: ({ zNum }) => ({ zNum: zNum + 1 }) },
+    }));
+    expect(out).toEqual({
+      x: {
+        xStr: "foo",
+        xNum: 1,
+        y: {
+          yStr: "bar",
+          yNum: 2,
+          z: {
+            zStr: "baz",
+            zNum: 4,
+          },
+        },
+      },
+    });
+  });
+
+  it("null works as expected", () => {
+    const map: Record<string, { p: { value: number } | null }> = {
+      x: { p: { value: 1 } },
+      y: { p: { value: 2 } },
+    };
+    const out = deepMergeInMap(map, "x", () => ({ p: null }));
+    expect(out).toEqual({
+      x: { p: null },
+      y: { p: { value: 2 } },
+    });
+  });
+
+  it("undefined works as expected", () => {
+    const map: Record<string, { p?: { value: number } }> = {
+      x: { p: { value: 1 } },
+      y: { p: { value: 2 } },
+    };
+    const out = deepMergeInMap(map, "x", () => ({ p: undefined }));
+    expect(out).toEqual({
+      x: { p: undefined },
+      y: { p: { value: 2 } },
+    });
+    expect(typeof out.x.p).toEqual("undefined");
+    expect(new Set(Object.keys(out.x)).has("p")).toEqual(true);
+  });
+
+  it("not setting a property does not make it undefined", () => {
+    const map: Record<string, { p?: { value: number } }> = {
+      x: { p: { value: 1 } },
+      y: { p: { value: 2 } },
+    };
+    const out = deepMergeInMap(map, "x", () => ({}));
+    expect(out).toEqual({
+      x: { p: { value: 1 } },
+      y: { p: { value: 2 } },
+    });
+  });
+
+  it("returning an empty object creates a new object reference", () => {
+    const map: Record<string, { p?: { value: number } }> = {
+      x: { p: { value: 1 } },
+      y: { p: { value: 2 } },
+    };
+    const out = deepMergeInMap(map, "x", () => ({}));
+    expect(out.x === map.x).toEqual(false);
+    expect(out.y === map.y).toEqual(true);
+  });
 });

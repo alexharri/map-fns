@@ -20,7 +20,7 @@ function deepMerge<T, K extends keyof T = keyof T>(
     if (
       typeof v !== "object" || // Primitives
       !v || // null
-      (v as any).__proto__ !== Object.prototype // Arrays, Sets, etc
+      (v as any).constructor !== Object // Arrays, Sets, etc
     ) {
       out[k] = v as T[K];
       continue;

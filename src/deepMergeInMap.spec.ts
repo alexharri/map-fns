@@ -1,7 +1,7 @@
 import deepMergeInMap from "./deepMergeInMap";
 
 describe("mergeInMapDeep", () => {
-  it("work as expected", () => {
+  it("merges objects deeply", () => {
     const map = {
       x: {
         xStr: "foo",
@@ -88,7 +88,7 @@ describe("mergeInMapDeep", () => {
     });
   });
 
-  it("null works as expected", () => {
+  it("works as expected with null", () => {
     const map: Record<string, { p: { value: number } | null }> = {
       x: { p: { value: 1 } },
       y: { p: { value: 2 } },
@@ -100,7 +100,7 @@ describe("mergeInMapDeep", () => {
     });
   });
 
-  it("undefined works as expected", () => {
+  it("work as expected with undefined", () => {
     const map: Record<string, { p?: { value: number } }> = {
       x: { p: { value: 1 } },
       y: { p: { value: 2 } },
@@ -114,19 +114,7 @@ describe("mergeInMapDeep", () => {
     expect(new Set(Object.keys(out.x)).has("p")).toEqual(true);
   });
 
-  it("not setting a property does not make it undefined", () => {
-    const map: Record<string, { p?: { value: number } }> = {
-      x: { p: { value: 1 } },
-      y: { p: { value: 2 } },
-    };
-    const out = deepMergeInMap(map, "x", () => ({}));
-    expect(out).toEqual({
-      x: { p: { value: 1 } },
-      y: { p: { value: 2 } },
-    });
-  });
-
-  it("returning an empty object creates a new object reference", () => {
+  it("always returns a new object reference", () => {
     const map: Record<string, { p?: { value: number } }> = {
       x: { p: { value: 1 } },
       y: { p: { value: 2 } },

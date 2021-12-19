@@ -17,7 +17,7 @@ function deepMerge<T, K extends keyof T = keyof T>(
       out[k] = deepMerge(out[k], v(out[k]));
       continue;
     }
-    if (typeof v !== "object" || !v) {
+    if (typeof v !== "object" || Array.isArray(v) || !v) {
       out[k] = v as T[K];
       continue;
     }

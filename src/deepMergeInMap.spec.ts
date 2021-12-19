@@ -135,4 +135,13 @@ describe("mergeInMapDeep", () => {
     expect(out.x === map.x).toEqual(false);
     expect(out.y === map.y).toEqual(true);
   });
+
+  it("replaces arrays instead of merging them", () => {
+    const map: Record<string, { value: number[] }> = {
+      x: { value: [1, 2, 3] },
+      y: { value: [4, 5, 6] },
+    };
+    const out = deepMergeInMap(map, "x", () => ({ value: [7, 8, 9] }));
+    expect(out.x.value).toEqual([7, 8, 9]);
+  });
 });

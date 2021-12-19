@@ -39,4 +39,18 @@ describe("mergeInMapDeep", () => {
       },
     });
   });
+
+  it("does not modify objects not specified", () => {
+    const map = { x: { value: 1 }, y: { value: 2 } };
+    const out = deepMergeInMap(map, "x", () => ({ value: 3 }));
+    expect(out.x).not.toEqual(map.x);
+    expect(out.y).toEqual(map.y);
+  });
+
+  it("does not modify the original map", () => {
+    const map = { x: { value: 1 }, y: { value: 2 } };
+    const out = deepMergeInMap(map, "x", () => ({ value: 3 }));
+    expect(map).toEqual({ x: { value: 1 }, y: { value: 2 } });
+    expect(out).toEqual({ x: { value: 3 }, y: { value: 2 } });
+  });
 });

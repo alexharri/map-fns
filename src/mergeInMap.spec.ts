@@ -272,11 +272,32 @@ describe("mergeInMap", () => {
     expect(out).toEqual({ x: { p: { value: 2 } }, y: { p: { value: 3 } } });
   });
 
-  test("WIP: nested compute functions work", () => {
-    const map = { x: { p: { value: 1 } }, y: { p: { value: 2 } } };
-    const out = mergeInMap(map, ["x", "y"], {
-      p: { value: (value) => value + 1 },
+  test("nested compute functions work", () => {
+    const map = {
+      x: {
+        a: { value: 1, b: { value: 2, c: { value: 3 } } },
+      },
+      y: {
+        a: { value: 2, b: { value: 2, c: { value: 3 } } },
+      },
+    };
+    const out = mergeInMap(map, "x", {
+      a: {
+        value: (value) => value + 1,
+        b: {
+          c: (c) => ({
+            value: c.value + 1,
+          }),
+        },
+      },
     });
-    expect(out).toEqual({ x: { p: { value: 2 } }, y: { p: { value: 3 } } });
+    expect(out).toEqual({
+      x: {
+        a: { value: 2, b: { value: 2, c: { value: 4 } } },
+      },
+      y: {
+        a: { value: 2, b: { value: 2, c: { value: 3 } } },
+      },
+    });
   });
 });

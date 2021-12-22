@@ -24,7 +24,7 @@ import { AnyMap, ItemInMap, KeysOfFilteredType } from "./types";
 export default function addListToMap<M extends AnyMap>(
   map: M,
   items: ItemInMap<M>[],
-  keyProperty: KeysOfFilteredType<ItemInMap<M>, keyof M>
+  keyProperty: KeysOfFilteredType<ItemInMap<M>, string | number>
 ): M {
   const obj: M = { ...map };
 

@@ -10,3 +10,15 @@ export interface AnyMap {
 export interface MapOf<T> {
   [key: Key]: T;
 }
+
+/** @internal */
+export type ItemInMap<M extends AnyMap, T extends M[keyof M] = M[keyof M]> = T;
+
+/** @internal */
+export type FilterType<T, U, K extends keyof T = keyof T> = {
+  [_K in K as T[_K] extends U ? _K : never]: T[_K];
+};
+
+/** @internal */
+export type KeysOfFilteredType<T, U> = keyof FilterType<T, U> &
+  (string | number);

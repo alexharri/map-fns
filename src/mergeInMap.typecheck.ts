@@ -48,15 +48,35 @@ mergeInMap({}, ["a"], (x) => x);
 // Unless they have a type
 mergeInMap({} as Record<string, {}>, ["a"], (x) => x);
 
-/** Deep merging works */
-
-mergeInMap({ x: { a: { b: { c: { value: 1 } } } } }, "x", () => ({
-  a: { b: { c: { value: 2 } } },
-}));
-
 /** Providing an object directly works */
 
 mergeInMap({ x: { value: 1 } }, "x", { value: 2 });
+
+/** Deep merging works */
+
+mergeInMap(
+  {
+    x: {
+      a: {
+        value: 1,
+        b: {
+          value: 2,
+          c: {
+            value: 3,
+          },
+        },
+      },
+    },
+  },
+  "x",
+  {
+    a: {
+      b: {
+        c: { value: 4 },
+      },
+    },
+  }
+);
 
 /** Providing a compute function works */
 

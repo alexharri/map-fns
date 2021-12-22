@@ -89,13 +89,15 @@ export default function mergeInMap<
    * Supports returning functions to compute properties like so:
    *
    * ```tsx
+   *  const map = { key: { count: 1 } };
+   *
    *  // "Normal" syntax
-   *  deepMergeInMap(map, "key", (item) => ({
+   *  mergeInMap(map, "key", (item) => ({
    *    count: item.count + 1,
    *  }));
    *
    *  // Compute function
-   *  deepMergeInMap(map, "key", () => ({
+   *  mergeInMap(map, "key", () => ({
    *    count: (count) => count + 1,
    *  }));
    * ```

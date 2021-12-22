@@ -1,7 +1,13 @@
 import typescript from "@rollup/plugin-typescript";
 
 const items = [];
-const modules = ["index", "removeKeysFromMap"];
+const modules = [
+  "index",
+  "removeKeysFromMap",
+  "mergeInMap",
+  "modifyInMap",
+  "addListToMap",
+];
 
 for (const module of modules) {
   items.push({

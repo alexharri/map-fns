@@ -21,10 +21,10 @@ import { AnyMap, ItemInMap, KeysOfFilteredType } from "./types";
  * @param keyProperty - The property of the items that contains the map key to use (e.g. `id`).
  * @returns A new map with the items added to it.
  */
-export default function addListToMap<M extends AnyMap, T extends ItemInMap<M>>(
+export default function addListToMap<M extends AnyMap>(
   map: M,
-  items: T[],
-  keyProperty: KeysOfFilteredType<T, string | number>
+  items: ItemInMap<M>[],
+  keyProperty: KeysOfFilteredType<ItemInMap<M>, keyof M>
 ): M {
   const obj: M = { ...map };
 

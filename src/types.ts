@@ -12,7 +12,7 @@ export interface MapOf<T> {
 }
 
 /** @internal */
-export type ItemInMap<M extends AnyMap> = M[keyof M];
+export type ItemInMap<M extends AnyMap, T extends M[keyof M] = M[keyof M]> = T;
 
 /** @internal */
 export type FilterType<T, U, K extends keyof T = keyof T> = {
@@ -20,4 +20,5 @@ export type FilterType<T, U, K extends keyof T = keyof T> = {
 };
 
 /** @internal */
-export type KeysOfFilteredType<T, U> = keyof FilterType<T, U> & string;
+export type KeysOfFilteredType<T, U> = keyof FilterType<T, U> &
+  (string | number);

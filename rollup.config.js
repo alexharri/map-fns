@@ -7,6 +7,7 @@ const modules = [
   "mergeInMap",
   "modifyInMap",
   "addListToMap",
+  "mapMap",
 ];
 
 for (const module of modules) {

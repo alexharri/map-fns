@@ -2,7 +2,7 @@ import { AnyMap, ItemInMap } from "./types";
 
 /**
  * Creates a new `map` populated with every key in the original `map` where the
- * value behind each `k` in `keys` is the return value of `fn(map[k])`.
+ * value of each key `k` in the new map is the return value of `fn(map[k])`.
  *
  * @param map The original map.
  * @param fn A function that takes a single argument `map[k]` and returns the value of `newMap[k]`.

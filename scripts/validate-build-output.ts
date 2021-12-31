@@ -1,11 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-const fnsDir = path.resolve(__dirname, "../src");
+const srcDir = path.resolve(__dirname, "../src");
 const distDir = path.resolve(__dirname, "../dist");
 
-const allFileNames = fs.readdirSync(fnsDir);
-
+const allFileNames = fs.readdirSync(srcDir);
 const allFileNamesSet = new Set(allFileNames);
 
 const fnFileNames = allFileNames.filter((fileName) => {

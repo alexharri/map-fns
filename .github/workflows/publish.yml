@@ -25,5 +25,8 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Build
+        run: npm run build:validate-output
+
       - name: Release
         run: npm run release

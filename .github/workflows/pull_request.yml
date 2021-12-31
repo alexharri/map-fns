@@ -23,5 +23,8 @@ jobs:
       - name: Test
         run: npm run test:ci
 
-      - name: Build # Ensure that the build is successful when it reaches master
+      - name: Build
         run: npm run build
+
+      - name: Validate build
+        run: npm run build:validate-output

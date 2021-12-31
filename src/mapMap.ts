@@ -15,7 +15,7 @@ export default function mapMap<M extends AnyMap, T>(
   const obj = {} as Record<keyof M, T>;
   const keys = Object.keys(map) as Array<keyof M>;
 
-  for (const key in keys) {
+  for (const key of keys) {
     obj[key] = fn(map[key]);
   }
 

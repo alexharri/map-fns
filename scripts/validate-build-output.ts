@@ -82,22 +82,20 @@ for (const fileName of fnFileNames) {
 console.log("\nEnsuring that the index.esm.js file exports every function.\n");
 
 {
-  // Check that index.esm.js contains every export that it should
-  const line = indexEsmContent
-    .split("\n")
-    .find((line) => line.startsWith("export {"));
-  const exports = new Set(
-    line
-      .split("export {")[1]
-      .split("}")[0]
-      .split(",")
-      .map((str) => str.trim())
-      .filter(Boolean)
-  );
+  // The end of index.esm.js should contain a line that exports every function:
+  //
+  //    export { fnA, fnB, fnC };
+  //
+  // This regex matches the function list "fnA, fnB, fnC".
+  //
+  const exportsRegex = /export { (?<exportsStr>([a-z]+(, )?)+) }/i;
+
+  const { exportsStr } = indexEsmContent.match(exportsRegex)!.groups;
+  const exportedFunctionsSet = new Set(exportsStr.split(", ").filter(Boolean));
 
   for (const fileName of fnFileNames) {
     const withoutDotTs = fileName.split(".ts")[0];
-    if (!exports.has(withoutDotTs)) {
+    if (!exportedFunctionsSet.has(withoutDotTs)) {
       throw new Error(
         `Expected index.esm.js to export function '${withoutDotTs}'.`
       );

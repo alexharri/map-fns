@@ -1,11 +1,11 @@
 import { AnyMap } from "./types";
 
 /**
- * Takes in two maps and returns true if they contain the same keys and the values behind
- * their keys are shallowly equal. Returns false otherwise.
+ * Takes in two maps and returns true if they contain the same keys and the
+ * values behind their keys are shallowly equal. Returns false otherwise.
  *
- * This function can be useful to check if changes have occurred in any of the items in
- * the map.
+ * This function can be useful to check if changes have occurred in any of
+ * the items in the map.
  *
  * The order that the maps are provided in does not matter.
  *

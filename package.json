@@ -1,6 +1,7 @@
 {
   "name": "map-fns",
   "main": "index.js",
+  "module": "index.esm.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",

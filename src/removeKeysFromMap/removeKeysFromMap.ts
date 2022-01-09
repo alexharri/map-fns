@@ -1,4 +1,4 @@
-import { AnyMap } from "./types";
+import { AnyMap } from "../types";
 
 /**
  * Creates a new `map` populated with every key in the original `map` except the

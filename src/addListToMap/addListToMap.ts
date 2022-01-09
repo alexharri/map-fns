@@ -1,4 +1,4 @@
-import { AnyMap, ItemInMap, KeysOfFilteredType } from "./types";
+import { AnyMap, ItemInMap, KeysOfFilteredType } from "../types";
 
 /**
  * Creates a new `map` populated with every item in the original `map` with every item in

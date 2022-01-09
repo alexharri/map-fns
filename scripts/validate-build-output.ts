@@ -4,48 +4,40 @@ import path from "path";
 const srcDir = path.resolve(__dirname, "../src");
 const distDir = path.resolve(__dirname, "../dist");
 
-const allFileNames = fs.readdirSync(srcDir);
-const allFileNamesSet = new Set(allFileNames);
+const fnFileNames = fs
+  .readdirSync(srcDir, { withFileTypes: true })
+  .filter((item) => item.isDirectory())
+  .map((item) => item.name);
 
-const fnFileNames = allFileNames.filter((fileName) => {
-  if (fileName.endsWith(".spec.ts") || fileName.endsWith(".typecheck.ts")) {
-    return false;
-  }
-
-  if (!fileName.endsWith(".ts")) {
-    return false;
-  }
-
-  const withoutDotTs = fileName.split(".ts")[0];
-
-  const hasSpecTs = allFileNamesSet.has(`${withoutDotTs}.spec.ts`);
-  const hasTypecheckTs = allFileNamesSet.has(`${withoutDotTs}.typecheck.ts`);
-
-  if (!hasSpecTs || !hasTypecheckTs) {
-    return false;
-  }
-
-  return true;
-});
+if (fnFileNames.length === 0) {
+  throw new Error(`Did not find any functions.`);
+}
 
 console.log("Found source .ts files for the following functions:\n");
 console.log(
   fnFileNames.map((fileName) => `\t${fileName.split(".ts")[0]}`).join("\n")
 );
 console.log(
-  "\nChecking that .js, .esm.js and .d.ts files were emitted to ~/dist for each function (and index).\n"
+  "\nChecking that the appropriate .js, .esm.js and .d.ts files were emitted to ~/dist for each function.\n"
 );
 
-const fileNamesToCheck = ["index.ts", ...fnFileNames];
-
-for (const fileName of fileNamesToCheck) {
+for (const fileName of fnFileNames) {
   const withoutDotTs = fileName.split(".ts")[0];
+  const fnDirPath = path.resolve(distDir, `./${withoutDotTs}`);
 
-  for (const ext of [".js", ".esm.js", ".d.ts"]) {
-    const filePath = path.resolve(distDir, `./${withoutDotTs}${ext}`);
+  const filesThatShouldExist = [
+    "index.js",
+    "index.esm.js",
+    "index.d.ts",
+    `${withoutDotTs}.d.ts`,
+  ];
 
+  for (const file of filesThatShouldExist) {
+    const filePath = path.resolve(fnDirPath, file);
     if (!fs.existsSync(filePath)) {
-      throw new Error(`Expected '${ext}' file for function '${withoutDotTs}'.`);
+      throw new Error(
+        `Expected '${file}' file to exist for function '${withoutDotTs}'.`
+      );
     }
   }
 

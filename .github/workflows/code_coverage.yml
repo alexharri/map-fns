@@ -11,6 +11,9 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Generate code coverage report
         run: npm run test:ci # test:ci generates code coverage
 

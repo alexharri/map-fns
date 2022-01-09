@@ -1,6 +1,10 @@
-# `map-fns`
+<h1 align="center">
+  <code>map-fns</code>
+</h1>
 
+<p align="center">
 Easily manipulate key-value stores in the browser and Node.js.
+</p>
 
 ---
 
@@ -11,6 +15,7 @@ Easily manipulate key-value stores in the browser and Node.js.
 - __Immutable & Pure__: Function arguments are not modified and new objects are returned.
 - __TypeScript__: Well documented and fully typed.
 - __Normal JavaScript objects__: Keeps things simple. No custom classes.
+- __Open Source__: MIT licensed. 
 
 ```tsx
 import { mergeInMap } from "map-fns";
@@ -26,7 +31,7 @@ const map = {
   },
 };
 
-const newMap = mergeInMap(map, "alice", {
+const newMap = mergeInMap(map, ["alice"], {
   permissions: (list) => [...list, "merge"],
 });
 
@@ -43,7 +48,7 @@ console.log(newMap);
 //   }
 ```
 
-`map-fns` supports tree-shaking, but if your environment does not you can import a specific function directly.
+`map-fns` supports tree-shaking. If your environment does not you can import a specific function directly.
 
 ```tsx
 import mergeInMap from "map-fns/mergeInMap";

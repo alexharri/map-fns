@@ -10,7 +10,12 @@ Easily manipulate key-value stores in the browser and Node.js.
   <a href="https://www.npmjs.com/package/map-fns" target="_blank">
     <img src="https://img.shields.io/npm/v/map-fns.svg?style=flat" />
   </a>
-  <img src="https://img.shields.io/github/checks-status/alexharri/map-fns/master" />
+  <a href="https://github.com/alexharri/map-fns/actions/workflows/publish.yml" target="_blank">
+    <img src="https://img.shields.io/github/workflow/status/alexharri/map-fns/Publish%20to%20npm" />
+  </a>
+  <a href="https://app.codecov.io/gh/alexharri/map-fns" target="_blank">
+    <img src="https://img.shields.io/codecov/c/gh/alexharri/map-fns" />
+  </a>
 </p>
 
 ---

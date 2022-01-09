@@ -8,6 +8,7 @@ const modules = [
   "modifyInMap",
   "addListToMap",
   "mapMap",
+  "mapEntries",
 ];
 
 for (const module of modules) {

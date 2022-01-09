@@ -16,7 +16,10 @@ for (const module of modules) {
   items.push({
     input: `src/${module}.ts`,
     external: [],
-    output: [{ file: `dist/${module}.js`, format: "cjs" }],
+    output: [
+      { file: `dist/${module}.js`, format: "cjs", exports: "auto" },
+      { file: `dist/${module}.esm.js`, format: "es" },
+    ],
     plugins: [
       typescript({
         tsconfig: "./tsconfig.json",

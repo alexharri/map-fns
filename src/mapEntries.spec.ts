@@ -61,4 +61,14 @@ describe("mapEntries", () => {
     expect(out[0][1] === { ...x }).toBe(false);
     expect(out[1][1] === { ...y }).toBe(false);
   });
+
+  it("can be used to populate a Map", () => {
+    const map = { x: 1, y: 2 };
+
+    const m = new Map(mapEntries(map));
+
+    expect(m.get("x")).toEqual(1);
+    expect(m.get("y")).toEqual(2);
+    expect(m.size).toEqual(2);
+  });
 });

@@ -1,4 +1,4 @@
-import { AnyMap, ItemInMap } from "./types";
+import { AnyMap, ItemInMap } from "../types";
 
 /**
  * Returns a new array of key, value entries from the provided map. The keys of the entries

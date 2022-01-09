@@ -13,12 +13,15 @@ const modules = [
 ];
 
 for (const module of modules) {
+  const input =
+    module === "index" ? `src/${module}.ts` : `src/${module}/index.ts`;
+  const output = module === "index" ? `dist/${module}` : `dist/${module}/index`;
   items.push({
-    input: `src/${module}.ts`,
+    input,
     external: [],
     output: [
-      { file: `dist/${module}.js`, format: "cjs", exports: "auto" },
-      { file: `dist/${module}.esm.js`, format: "es" },
+      { file: `${output}.js`, format: "cjs", exports: "auto" },
+      { file: `${output}.esm.js`, format: "es" },
     ],
     plugins: [
       typescript({

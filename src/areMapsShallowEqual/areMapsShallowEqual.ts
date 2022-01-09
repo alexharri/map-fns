@@ -1,4 +1,4 @@
-import { AnyMap } from "./types";
+import { AnyMap } from "../types";
 
 /**
  * Takes in two maps and returns true if they contain the same keys and the

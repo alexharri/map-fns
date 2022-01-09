@@ -1,4 +1,4 @@
-import { AnyMap, MapOf } from "./types";
+import { AnyMap, MapOf } from "../types";
 
 type DeepMergable<T> =
   | ((item: T) => DeepMergable<T>)

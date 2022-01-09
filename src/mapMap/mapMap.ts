@@ -1,4 +1,4 @@
-import { AnyMap, ItemInMap } from "./types";
+import { AnyMap, ItemInMap } from "../types";
 
 /**
  * Creates a new `map` populated with every key in the original `map` where the

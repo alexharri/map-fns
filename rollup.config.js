@@ -9,6 +9,7 @@ const modules = [
   "addListToMap",
   "mapMap",
   "mapEntries",
+  "areMapsShallowEqual",
 ];
 
 for (const module of modules) {

@@ -13,7 +13,10 @@ import { AnyMap } from "./types";
  * @param b Second map to compare
  * @returns True if they are equal, False if they are not
  */
-export function areMapsShallowEqual<M extends AnyMap>(a: M, b: M): boolean {
+export default function areMapsShallowEqual<M extends AnyMap>(
+  a: M,
+  b: M
+): boolean {
   const aKeys = Object.keys(a);
   const bKeys = Object.keys(b);
 

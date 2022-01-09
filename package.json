@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "test:ci": "jest --ci",
+    "test:ci": "jest --ci --coverage",
     "tscheck": "tsc --noEmit --skipLibCheck",
     "build": "npm run build:prepare && npm run build:bundle && npm run build:copy-files",
     "build:bundle": "rollup -c",

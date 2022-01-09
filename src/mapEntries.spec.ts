@@ -1,5 +1,4 @@
 import mapEntries from "./mapEntries";
-import { AnyMap } from "./types";
 
 describe("mapEntries", () => {
   it("returns the entries of a map", () => {

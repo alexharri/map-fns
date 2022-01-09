@@ -16,6 +16,9 @@ Easily manipulate key-value stores in the browser and Node.js.
   <a href="https://app.codecov.io/gh/alexharri/map-fns" target="_blank">
     <img src="https://img.shields.io/codecov/c/gh/alexharri/map-fns" />
   </a>
+  <a href="https://github.com/alexharri/map-fns/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/alexharri/map-fns" />
+  </a>
 </p>
 
 ---
@@ -26,7 +29,7 @@ Easily manipulate key-value stores in the browser and Node.js.
 - __Modular__: Import the functions you need, tree-shake the rest.
 - __Immutable & Pure__: Function arguments are not modified and new objects are returned.
 - __TypeScript__: Well documented and fully typed.
-- __Normal JavaScript objects__: Keeps things simple. No custom classes.
+- __Plain JavaScript objects__: Keep things simple. No custom classes.
 - __Open Source__: MIT licensed. 
 
 ```tsx

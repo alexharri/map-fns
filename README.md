@@ -6,6 +6,13 @@
 Easily manipulate key-value stores in the browser and Node.js.
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/map-fns" target="_blank">
+    <img src="https://img.shields.io/npm/v/map-fns.svg?style=flat" />
+  </a>
+  <img src="https://img.shields.io/github/checks-status/alexharri/map-fns/master" />
+</p>
+
 ---
 
 ## Why `map-fns`?

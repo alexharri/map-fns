@@ -72,7 +72,7 @@ import mergeInMap from "map-fns/mergeInMap";
 
 `map-fns` exports a variety of functions that can be used to easily manipulate key-value stores.
 
- * addListToMap
+ * [addListToMap](#addListToMap)
  * areMapsShallowEqual
  * mapEntries
  * mapMap
@@ -80,7 +80,44 @@ import mergeInMap from "map-fns/mergeInMap";
  * modifyInMap
  * removeKeysFromMap
 
- Examples have yet to be created for functions that are not a link.
+Examples have yet to be created for functions that are not a link.
+
+<h2 id="addListToMap">
+  addListToMap
+</h2>
+
+[Examples of using `addListToMap`](https://github.com/alexharri/map-fns/tree/master/examples/addListToMap).
+
+Use `addListToMap` to add a list of entries to a map.
+
+```tsx
+import { addListToMap } from "map-fns";
+
+const map = {
+  a: { id: "a", value: 1 },
+  b: { id: "b", value: 2 },
+  c: { id: "c", value: 3 },
+};
+
+addListToMap(
+  map,
+  [
+    { id: "d", value: 4 },
+    { id: "e", value: 5 },
+  ],
+  "id"
+);
+
+//=> {
+//     a: { id: "a", value: 1 },
+//     b: { id: "b", value: 2 },
+//     c: { id: "c", value: 3 },
+//     d: { id: "d", value: 4 },
+//     d: { id: "e", value: 5 },
+//   }
+```
+
+`addListToMap` assumes that there is a __key__ field (such as `id` in this example) whose value is equal to the entry's key in the map.
 
 
 <h2 id="mergeInMap">

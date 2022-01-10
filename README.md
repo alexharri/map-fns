@@ -46,12 +46,10 @@ const map = {
   },
 };
 
-const newMap = mergeInMap(map, ["alice"], {
-  permissions: (list) => [...list, "merge"],
+mergeInMap(map, "alice", {
+  permissions: (permissions) => [...permissions, "merge"],
 });
-
-console.log(newMap);
-// > {
+//=> {
 //     alice: {
 //       name: "Alice",
 //       permissions: ["view", "merge"],
@@ -67,4 +65,147 @@ console.log(newMap);
 
 ```tsx
 import mergeInMap from "map-fns/mergeInMap";
+```
+
+
+# Functions
+
+`map-fns` exports a variety of functions that can be used to easily manipulate key-value stores.
+
+ * `addListToMap`
+ * `areMapsShallowEqual`
+ * `mapEntries`
+ * `mapMap`
+ * [`mergeInMap`](#mergeInMap)
+ * `modifyInMap`
+ * `removeKeysFromMap`
+
+ Examples have yet to be created for functions that are not a link.
+
+
+<h2 id="mergeInMap">
+  <code>mergeInMap</code>
+</h2>
+
+[Examples of using `mergeInMap`](https://github.com/alexharri/map-fns/tree/master/examples/mergeInMap).
+
+Use `mergeInMap` to modify entries in a map deeply.
+
+```tsx
+import { mergeInMap } from "map-fns";
+
+const companies = {
+  apple: {
+    name: "Apple Inc.",
+    headquarters: {
+      country: "United States",
+      address: "1 Apple Park Way",
+    },
+  },
+  google: {
+    name: "Google LLC",
+    headquarters: {
+      country: "United States",
+      address: "1600 Amphitheatre Parkway",
+    },
+  },
+};
+
+// Move Google's headquarters
+
+mergeInMap(companies, "google", {
+  headquarters: {
+    address: "50 Quantum Avenue St.",
+  },
+});
+//=> {
+//     apple: {
+//       name: "Apple Inc.",
+//       headquarters: {
+//         country: "United States",
+//         address: "1 Apple Park Way",
+//       },
+//     },
+//     google: {
+//       name: "Google LLC",
+//       headquarters: {
+//         country: "United States",
+//         address: "1600 Amphitheatre Parkway",
+//       },
+//     },
+//   }
+```
+
+Instead of providing a property directly, a callback can be provided:
+
+```tsx
+import { mergeInMap } from "map-fns";
+
+const departments = {
+  engineering: {
+    name: "Engineering",
+    employees: ["Alex", "Brandon", "Caitlin"],
+  },
+  design: {
+    name: "Design",
+    employees: ["Daniela", "Evan"],
+  },
+};
+
+// Let's welcome Francesca to the Design team
+
+mergeInMap(departments, "design", {
+  employees: (employees) => [...employees, "Francesca"],
+});
+//=> {
+//     engineering: {
+//       name: "Engineering",
+//       employees: ["Alex", "Brandon", "Caitlin"],
+//     },
+//     design: {
+//       name: "Design",
+//       employees: ["Daniela", "Evan", "Francesca"],
+//     },
+//   }
+```
+
+By providing an array of keys, multiple entries in the map can be modified at once:
+
+```tsx
+import { mergeInMap } from "map-fns";
+
+const employees = {
+  alice: {
+    name: "Alice Thompson",
+    salary: 160_000,
+  },
+  bob: {
+    name: "Bob Smith",
+    salary: 120_000,
+  },
+  charlie: {
+    name: "Charlie Miller",
+    salary: 145_000,
+  },
+};
+
+// Give Alice and Bob a 10% raise
+
+mergeInMap(employees, ["alice", "bob"], {
+  salary: (salary) => salary * 1.1,
+});
+//=> {
+//     alice: {
+//       name: "Alice Thompson",
+//       salary: 176_000,
+//     },
+//     bob: {
+//       name: "Bob Smith",
+//       salary: 132_000,
+//     },
+//     charlie: {
+//       name: "Charlie Miller",
+//       salary: 145_000,
+//     },
+//   }
 ```

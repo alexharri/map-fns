@@ -10,6 +10,7 @@ const modules = [
   "mapMap",
   "mapEntries",
   "areMapsShallowEqual",
+  "partialMap",
 ];
 
 for (const module of modules) {

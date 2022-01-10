@@ -43,5 +43,19 @@
   },
   "contributors": [
     "Alex Harri Jónsson <alexharri2919@gmail.com>"
+  ],
+  "keywords": [
+    "map",
+    "key-value",
+    "maps",
+    "typescript",
+    "merge",
+    "functional",
+    "pure",
+    "modular",
+    "util",
+    "utils",
+    "utilities",
+    "helper"
   ]
 }

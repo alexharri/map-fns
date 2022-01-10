@@ -72,19 +72,19 @@ import mergeInMap from "map-fns/mergeInMap";
 
 `map-fns` exports a variety of functions that can be used to easily manipulate key-value stores.
 
- * `addListToMap`
- * `areMapsShallowEqual`
- * `mapEntries`
- * `mapMap`
- * [`mergeInMap`](#mergeInMap)
- * `modifyInMap`
- * `removeKeysFromMap`
+ * addListToMap
+ * areMapsShallowEqual
+ * mapEntries
+ * mapMap
+ * [mergeInMap](#mergeInMap)
+ * modifyInMap
+ * removeKeysFromMap
 
  Examples have yet to be created for functions that are not a link.
 
 
 <h2 id="mergeInMap">
-  <code>mergeInMap</code>
+  mergeInMap
 </h2>
 
 [Examples of using `mergeInMap`](https://github.com/alexharri/map-fns/tree/master/examples/mergeInMap).

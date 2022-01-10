@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "map-fns": [
+        "../src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "../src/**/*",
+    "./**/*"
+  ],
+}

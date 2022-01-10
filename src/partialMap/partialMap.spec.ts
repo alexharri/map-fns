@@ -31,4 +31,11 @@ describe("partialMap", () => {
     expect(map.c === out.c).toEqual(true);
     expect(map.a === out.b).toEqual(false); // Sanity check
   });
+
+  it("throws an error if a key that does not exist in the map is provided", () => {
+    const map: Record<string, number> = { a: 1, b: 2, c: 3 };
+    expect(() => partialMap(map, ["d"])).toThrow(
+      "Key 'd' does not exist in map."
+    );
+  });
 });

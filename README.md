@@ -160,6 +160,32 @@ mapEntries(map, ["c", "b"]);
 If a provided key does not exist in the map an error is thrown.
 
 
+<h2 id="mapMap">
+  mapMap
+</h2>
+
+[Examples of using `mapMap`](https://github.com/alexharri/map-fns/tree/master/examples/mapMap).
+
+Use `mapMap` to transform every value in map to a new value with a callback function.
+
+```tsx
+import { mapMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+mapMap(map, (n) => n * 2);
+//=> {
+//     a: 2,
+//     b: 4,
+//     c: 6,
+//   }
+```
+
+
 <h2 id="mergeInMap">
   mergeInMap
 </h2>

@@ -74,7 +74,7 @@ import mergeInMap from "map-fns/mergeInMap";
 
  * [addListToMap](#addListToMap)
  * areMapsShallowEqual
- * mapEntries
+ * [mapEntries](#mapEntries)
  * mapMap
  * [mergeInMap](#mergeInMap)
  * modifyInMap
@@ -118,6 +118,46 @@ addListToMap(
 ```
 
 `addListToMap` assumes that there is a __key__ field (such as `id` in this example) whose value is equal to the entry's key in the map.
+
+
+<h2 id="mapEntries">
+  mapEntries
+</h2>
+
+[Examples of using `mapEntries`](https://github.com/alexharri/map-fns/tree/master/examples/mapEntries).
+
+Use `mapEntries` to get the list of key-value entries in a map.
+
+```tsx
+import { mapEntries } from "map-fns";
+
+const map = { a: 1, b: 2, c: 3 };
+
+mapEntries(map);
+//=> [
+//     ["a", 1],
+//     ["b", 2],
+//     ["c", 3]
+//   ]
+```
+
+A list of keys can be provided as the second argument to only return the entries for those keys.
+
+```tsx
+import { mapEntries } from "map-fns";
+
+const map = { a: 1, b: 2, c: 3 };
+
+// The order of the keys determines the order of the entries
+
+mapEntries(map, ["c", "b"]);
+//=> [
+//     ["c", 3]
+//     ["b", 2],
+//   ]
+```
+
+If a provided key does not exist in the map an error is thrown.
 
 
 <h2 id="mergeInMap">

@@ -75,10 +75,10 @@ import mergeInMap from "map-fns/mergeInMap";
  * [addListToMap](#addListToMap)
  * areMapsShallowEqual
  * [mapEntries](#mapEntries)
- * mapMap
+ * [mapMap](#mapMap)
  * [mergeInMap](#mergeInMap)
  * modifyInMap
- * removeKeysFromMap
+ * [removeKeysFromMap](#removeKeysFromMap)
 
 Examples have yet to be created for functions that are not a link.
 

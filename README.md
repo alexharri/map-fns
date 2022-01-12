@@ -23,7 +23,7 @@
 
 ---
 
-## Why `map-fns`?
+## Why use `map-fns`?
 
 - __Zero dependencies__: Keep your deployments and node modules lightweight.
 - __Modular__: Import the functions you need, tree-shake the rest.

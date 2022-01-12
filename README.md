@@ -87,7 +87,7 @@ Examples have yet to be created for functions that are not a link.
 
 <p>
   <a href="https://github.com/alexharri/map-fns/tree/master/examples/addListToMap" target="_blank">
-    Examples of using `addListToMap`
+    Examples of using <code>addListToMap</code>
   </a>.
 </p>
 
@@ -127,7 +127,7 @@ addListToMap(
 
 <p>
   <a href="https://github.com/alexharri/map-fns/tree/master/examples/mapEntries" target="_blank">
-    Examples of using `mapEntries`
+    Examples of using <code>mapEntries</code>
   </a>.
 </p>
 
@@ -169,7 +169,7 @@ If a provided key does not exist in the map an error is thrown.
 
 <p>
   <a href="https://github.com/alexharri/map-fns/tree/master/examples/mapMap" target="_blank">
-    Examples of using `mapMap`
+    Examples of using <code>mapMap</code>
   </a>.
 </p>
 
@@ -197,7 +197,7 @@ mapMap(map, (n) => n * 2);
 
 <p>
   <a href="https://github.com/alexharri/map-fns/tree/master/examples/mergeInMap" target="_blank">
-    Examples of using `mergeInMap`
+    Examples of using <code>mergeInMap</code>
   </a>.
 </p>
 
@@ -327,7 +327,7 @@ mergeInMap(employees, ["alice", "bob"], {
 
 <p>
   <a href="https://github.com/alexharri/map-fns/tree/master/examples/partialMap" target="_blank">
-    Examples of using `partialMap`
+    Examples of using <code>partialMap</code>
   </a>.
 </p>
 
@@ -354,7 +354,7 @@ partialMap(map, ["a", "b"]);
 
 <p>
   <a href="https://github.com/alexharri/map-fns/tree/master/examples/removeKeysFromMap" target="_blank">
-    Examples of using `removeKeysFromMap`
+    Examples of using <code>removeKeysFromMap</code>
   </a>.
 </p>
 

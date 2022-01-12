@@ -85,9 +85,11 @@ Examples have yet to be created for functions that are not a link.
 
 ## addListToMap
 
-<a href="https://github.com/alexharri/map-fns/tree/master/examples/addListToMap" target="_blank">
-  Examples of using `addListToMap`
-</a>.
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/addListToMap" target="_blank">
+    Examples of using `addListToMap`
+  </a>.
+</p>
 
 Use `addListToMap` to add a list of entries to a map.
 
@@ -123,9 +125,11 @@ addListToMap(
 
 ## mapEntries
 
-<a href="https://github.com/alexharri/map-fns/tree/master/examples/mapEntries" target="_blank">
-  Examples of using `mapEntries`
-</a>.
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/mapEntries" target="_blank">
+    Examples of using `mapEntries`
+  </a>.
+</p>
 
 Use `mapEntries` to get the list of key-value entries in a map.
 
@@ -163,9 +167,11 @@ If a provided key does not exist in the map an error is thrown.
 
 ## mapMap
 
-<a href="https://github.com/alexharri/map-fns/tree/master/examples/mapMap" target="_blank">
-  Examples of using `mapMap`
-</a>.
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/mapMap" target="_blank">
+    Examples of using `mapMap`
+  </a>.
+</p>
 
 Use `mapMap` to transform every value in map to a new value with a callback function.
 
@@ -189,9 +195,11 @@ mapMap(map, (n) => n * 2);
 
 ## mergeInMap
 
-<a href="https://github.com/alexharri/map-fns/tree/master/examples/mergeInMap" target="_blank">
-  Examples of using `mergeInMap`
-</a>.
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/mergeInMap" target="_blank">
+    Examples of using `mergeInMap`
+  </a>.
+</p>
 
 Use `mergeInMap` to modify entries in a map deeply.
 
@@ -317,9 +325,11 @@ mergeInMap(employees, ["alice", "bob"], {
 
 ## partialMap
 
-<a href="https://github.com/alexharri/map-fns/tree/master/examples/partialMap" target="_blank">
-  Examples of using `partialMap`
-</a>.
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/partialMap" target="_blank">
+    Examples of using `partialMap`
+  </a>.
+</p>
 
 Use `partialMap` to get a copy of a map only including the keys provided in the second argument.
 
@@ -342,9 +352,11 @@ partialMap(map, ["a", "b"]);
 
 ## removeKeysFromMap
 
-<a href="https://github.com/alexharri/map-fns/tree/master/examples/removeKeysFromMap" target="_blank">
-  Examples of using `removeKeysFromMap`
-</a>.
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/removeKeysFromMap" target="_blank">
+    Examples of using `removeKeysFromMap`
+  </a>.
+</p>
 
 Use `removeKeysFromMap` to get a copy of a map excluding the keys provided in the second argument.
 

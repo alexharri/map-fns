@@ -83,9 +83,7 @@ import mergeInMap from "map-fns/mergeInMap";
 
 Examples have yet to be created for functions that are not a link.
 
-<h2 id="addListToMap">
-  addListToMap
-</h2>
+## addListToMap
 
 [Examples of using `addListToMap`](https://github.com/alexharri/map-fns/tree/master/examples/addListToMap).
 
@@ -121,9 +119,7 @@ addListToMap(
 `addListToMap` assumes that there is a __key__ field (such as `id` in this example) whose value is equal to the entry's key in the map.
 
 
-<h2 id="mapEntries">
-  mapEntries
-</h2>
+## mapEntries
 
 [Examples of using `mapEntries`](https://github.com/alexharri/map-fns/tree/master/examples/mapEntries).
 
@@ -161,9 +157,7 @@ mapEntries(map, ["c", "b"]);
 If a provided key does not exist in the map an error is thrown.
 
 
-<h2 id="mapMap">
-  mapMap
-</h2>
+## mapMap
 
 [Examples of using `mapMap`](https://github.com/alexharri/map-fns/tree/master/examples/mapMap).
 
@@ -187,9 +181,7 @@ mapMap(map, (n) => n * 2);
 ```
 
 
-<h2 id="mergeInMap">
-  mergeInMap
-</h2>
+## mergeInMap
 
 [Examples of using `mergeInMap`](https://github.com/alexharri/map-fns/tree/master/examples/mergeInMap).
 
@@ -315,9 +307,7 @@ mergeInMap(employees, ["alice", "bob"], {
 ```
 
 
-<h2 id="partialMap">
-  partialMap
-</h2>
+## partialMap
 
 [Examples of using `partialMap`](https://github.com/alexharri/map-fns/tree/master/examples/partialMap).
 
@@ -340,9 +330,7 @@ partialMap(map, ["a", "b"]);
 ```
 
 
-<h2 id="removeKeysFromMap">
-  removeKeysFromMap
-</h2>
+## removeKeysFromMap
 
 [Examples of using `removeKeysFromMap`](https://github.com/alexharri/map-fns/tree/master/examples/removeKeysFromMap).
 

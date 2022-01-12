@@ -312,3 +312,28 @@ mergeInMap(employees, ["alice", "bob"], {
 //     },
 //   }
 ```
+
+
+<h2 id="partialMap">
+  partialMap
+</h2>
+
+[Examples of using `partialMap`](https://github.com/alexharri/map-fns/tree/master/examples/partialMap).
+
+Use `partialMap` to get a copy of a map only including the keys provided in the second argument.
+
+```tsx
+import { partialMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+partialMap(map, ["a", "b"]);
+//=> {
+//     a: 1,
+//     b: 2,
+//   }
+```

@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-Easily manipulate key-value stores in the browser and Node.js.
+  Easily manipulate key-value stores in the browser and Node.js.
 </p>
 
 <p align="center">
@@ -78,6 +78,7 @@ import mergeInMap from "map-fns/mergeInMap";
  * [mapMap](#mapMap)
  * [mergeInMap](#mergeInMap)
  * modifyInMap
+ * [partialMap](#partialMap)
  * [removeKeysFromMap](#removeKeysFromMap)
 
 Examples have yet to be created for functions that are not a link.

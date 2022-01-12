@@ -337,3 +337,45 @@ partialMap(map, ["a", "b"]);
 //     b: 2,
 //   }
 ```
+
+
+<h2 id="removeKeysFromMap">
+  removeKeysFromMap
+</h2>
+
+[Examples of using `removeKeysFromMap`](https://github.com/alexharri/map-fns/tree/master/examples/removeKeysFromMap).
+
+Use `removeKeysFromMap` to get a copy of a map excluding the keys provided in the second argument.
+
+```tsx
+import { removeKeysFromMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+removeKeysFromMap(map, ["a", "c"]);
+//=> {
+//     b: 2,
+//   }
+```
+
+If you only need to remove a single key from the map, that key may be provided directly as the second argument.
+
+```tsx
+import { removeKeysFromMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+removeKeysFromMap(map, "c");
+//=> {
+//     a: 1,
+//     b: 2,
+//   }
+```

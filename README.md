@@ -73,7 +73,7 @@ import mergeInMap from "map-fns/mergeInMap";
 `map-fns` exports a variety of functions that can be used to easily manipulate key-value stores.
 
  * [addListToMap](#addListToMap)
- * areMapsShallowEqual
+ * [areMapsShallowEqual](#areMapsShallowEqual)
  * [mapEntries](#mapEntries)
  * [mapMap](#mapMap)
  * [mergeInMap](#mergeInMap)
@@ -121,6 +121,71 @@ addListToMap(
 ```
 
 `addListToMap` assumes that there is a __key__ field (such as `id` in this example) whose value is equal to the entry's key in the map.
+
+
+## areMapsShallowEqual
+
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/areMapsShallowEqual" target="_blank">
+    Examples of using <code>areMapsShallowEqual</code>
+  </a>.
+</p>
+
+Use `areMapsShallowEqual` to compare two maps shallowly. For two maps to be shallowly equal they must:
+
+ * Have the same number of keys
+ * For every key in map A, map B must contain that key.
+ * For every key in the maps, comparing `A[key] === B[key]` must return true.
+
+```tsx
+import { areMapsShallowEqual } from "map-fns";
+
+const a1 = { a: 1, b: 2, c: 3 };
+const b1 = { a: 1, b: 2, c: 3 };
+
+areMapsShallowEqual(a1, b1);
+//=> true
+
+
+const a2 = { a: 1, b: 2, c: 3 };
+const b2 = { a: 1, b: 2 };
+
+areMapsShallowEqual(a2, b2);
+//=> false
+
+
+const a3 = { a: 1, b: 2, c: 3 };
+const b3 = { a: 1, b: 2, c: 30 };
+
+areMapsShallowEqual(a3, b3);
+//=> false
+```
+
+Since the comparison uses `===`, objects are compared by reference, not by value.
+
+```tsx
+import { areMapsShallowEqual } from "map-fns";
+
+const a1 = { a: { id: "a", value: 1 } };
+const b1 = { a: { id: "a", value: 1 } };
+
+// Since `a1.a` and `b1.a` are different object references, comparing
+// them via `===` returns false.
+
+areMapsShallowEqual(a1, b1);
+//=> false
+
+
+const a = { id: "a", value: 1 };
+const a2 = { a };
+const b2 = { a };
+
+// Since `a2.a` and `b2.a` are the same object reference, comparing
+// them via `===` returns true.
+
+areMapsShallowEqual(a2, b2);
+//=> true
+```
 
 
 ## mapEntries

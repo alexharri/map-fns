@@ -67,6 +67,34 @@ mergeInMap(map, "alice", {
 import mergeInMap from "map-fns/mergeInMap";
 ```
 
+# Get started
+
+You can install `map-fns` as an npm package:
+
+```bash
+npm i -S map-fns
+```
+
+Functions can be imported with `import`:
+
+```tsx
+import { addListToMap, partialMap } from "map-fns";
+```
+
+You can also import a single function directly:
+
+```tsx
+import mergeInMap from "map-fns/mergeInMap";
+```
+
+though this is unnecessary if your environment supports tree-shaking.
+
+If you cannot use import, you can also use `require`.
+
+```tsx
+const { mapMap } = require("map-fns");
+```
+
 
 # Functions
 

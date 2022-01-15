@@ -1,6 +1,16 @@
 import mapPartialMap from "./mapPartialMap";
+import mapMap from "../mapMap";
+import partialMap from "../partialMap";
 
 describe("mapPartialMap", () => {
+  test("mapPartialMap() is equivalent to mapMap(partialMap())", () => {
+    const map = { a: 1, b: 2, c: 3 };
+    const a = mapPartialMap(map, ["a", "c"], (n) => n * 10);
+    const b = mapMap(partialMap(map, ["a", "c"]), (n) => n * 10);
+    expect(a).toEqual({ a: 10, c: 30 });
+    expect(a).toEqual(b);
+  });
+
   it("transforms a map as expected", () => {
     const map = { a: 1, b: 2, c: 3 };
     const keys = Object.keys(map) as Array<keyof typeof map>;

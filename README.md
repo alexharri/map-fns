@@ -76,6 +76,7 @@ import mergeInMap from "map-fns/mergeInMap";
  * [areMapsShallowEqual](#areMapsShallowEqual)
  * [mapEntries](#mapEntries)
  * [mapMap](#mapMap)
+ * [mapPartialMap](#mapPartialMap)
  * [mergeInMap](#mergeInMap)
  * [modifyInMap](#modifyInMap)
  * [partialMap](#partialMap)
@@ -256,6 +257,59 @@ mapMap(map, (n) => n * 2);
 //     c: 6,
 //   }
 ```
+
+
+## mapPartialMap
+
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/mapPartialMap" target="_blank">
+    Examples of using <code>mapPartialMap</code>
+  </a>.
+</p>
+
+Use `mapPartialMap` to transform a every value in a partial map.
+
+```tsx
+import { mapPartialMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+mapPartialMap(map, ["a", "c"], (n) => n * 10);
+//=> {
+//     a: 10,
+//     c: 30,
+//   }
+```
+
+Using `mapPartialMap(map, keys, callback)` is equivalent to using `mapMap(partialMap(map, keys), callback)`.
+
+```tsx
+import { mapPartialMap, mapMap, partialMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+mapPartialMap(map, ["a", "c"], (n) => n * 10);
+//=> {
+//     a: 10,
+//     c: 30,
+//   }
+
+mapMap(partialMap(map, ["a", "c"]), (n) => n * 10);
+//=> {
+//     a: 10,
+//     c: 30,
+//   }
+```
+
+`mapPartialMap` exists to improve readability and ease-of-use.
 
 
 ## mergeInMap

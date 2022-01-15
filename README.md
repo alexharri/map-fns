@@ -323,6 +323,53 @@ mergeInMap(employees, ["alice", "bob"], {
 ```
 
 
+## modifyInMap
+
+<p>
+  <a href="https://github.com/alexharri/map-fns/tree/master/examples/modifyInMap" target="_blank">
+    Examples of using <code>modifyInMap</code>
+  </a>.
+</p>
+
+Use `modifyInMap` to modify entries in a map.
+
+```tsx
+import { modifyInMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+modifyInMap(map, "a", (n) => n * 10);
+//=> {
+//     a: 10,
+//     b: 2,
+//     c: 3,
+//   }
+```
+
+Multiple entries can be modified by providing an array of keys as the second argument.
+
+```tsx
+import { modifyInMap } from "map-fns";
+
+const map = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+modifyInMap(map, ["a", "c"], (n) => n * 10);
+//=> {
+//     a: 10,
+//     b: 2,
+//     c: 30,
+//   }
+```
+
+
 ## partialMap
 
 <p>

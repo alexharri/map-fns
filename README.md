@@ -77,7 +77,7 @@ import mergeInMap from "map-fns/mergeInMap";
  * [mapEntries](#mapEntries)
  * [mapMap](#mapMap)
  * [mergeInMap](#mergeInMap)
- * modifyInMap
+ * [modifyInMap](#modifyInMap)
  * [partialMap](#partialMap)
  * [removeKeysFromMap](#removeKeysFromMap)
 

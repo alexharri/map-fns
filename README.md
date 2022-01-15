@@ -131,9 +131,9 @@ addListToMap(
   </a>.
 </p>
 
-Use `areMapsShallowEqual` to compare two maps shallowly. For two maps to be shallowly equal they must:
+Use `areMapsShallowEqual` to compare two maps shallowly. For two maps to be shallowly equal, each of the following conditions must be met.
 
- * Have the same number of keys
+ * The maps must have the same number of keys.
  * For every key in map A, map B must contain that key.
  * For every key in the maps, comparing `A[key] === B[key]` must return true.
 

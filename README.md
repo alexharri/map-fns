@@ -145,7 +145,7 @@ addListToMap(
 //     b: { id: "b", value: 2 },
 //     c: { id: "c", value: 3 },
 //     d: { id: "d", value: 4 },
-//     d: { id: "e", value: 5 },
+//     e: { id: "e", value: 5 },
 //   }
 ```
 

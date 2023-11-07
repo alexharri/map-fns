@@ -11,7 +11,7 @@
     "build": "npm run build:prepare && npm run build:bundle && npm run build:copy-files",
     "build:bundle": "rollup -c",
     "build:prepare": "npm run build:remove-old-build",
-    "build:copy-files": "cp README.md package.json dist/",
+    "build:copy-files": "cp README.md package.json LICENSE dist/",
     "build:remove-old-build": "rm -rf dist/ && rm -rf out/",
     "build:validate-output": "ts-node -T -O '{\"module\":\"commonjs\",\"esModuleInterop\":true}' scripts/validate-build-output",
     "release": "cd dist && semantic-release"

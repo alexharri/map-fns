@@ -44,6 +44,7 @@
   "contributors": [
     "Alex Harri Jónsson <alexharri2919@gmail.com>"
   ],
+  "license": "MIT",
   "keywords": [
     "map",
     "key-value",
